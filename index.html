@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Designing Environment - ScribbleX</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js/lib/customAlert.js"></script>
+    <script src="js/lib/split.js"></script>
+    <script src="js/lib/sha256.js"></script>
+    <script src="js/lib/slxKey.js"></script>
+
+    <script>
+        function init(){
+            alignElm();
+            // $("#editorManager").css("max-height", "0%");
+            // $("#editorManager").css("min-height", "0%");
+            // $("#browserManager").css("min-height", "100%");
+            // $("#browserManager").css("max-height", "100%");
+            // var gutters = document.querySelectorAll(".gutter");
+            // gutters.forEach((gutter)=>{
+            //     $(gutter).css("display", "none");
+            // });
+
+            $("#toolManager").width(0);
+            $("#managerContainer").width(50);
+            alignElm();
+        }
+    </script>
+</head>
+<body onload="init();">
+    <div id="container">
+        <div id="headerContainer"></div>
+        <div id="toolExp"></div>
+        <div id="appContainer">
+            <div id="managerContainer">
+                <div id="toolsBar">
+                    <button id="resizeManager" onclick="tools();" value="open">ReS</button>
+                </div>
+                <div id="toolManager"></div>
+            </div>
+            <div id="canvasContainer">
+                <div id="browserManager">
+                    <div id="browserContainer">
+                        <iframe frameborder="0" id="frame"></iframe>
+                    </div>
+                </div>
+                <div id="editorManager">
+                    <div id="editors">
+                        <div id="htmlManager"></div>
+                        <div id="cssManager"></div>
+                        <div id="jsManager"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="footerContainer"></div> -->
+    </div>
+
+    <script src="js/src/alignElm.js"></script>
+    <script src="js/src/splitContainer.js"></script>
+    <script src="js/src/elementManager.js"></script>
+
+    <script>
+        function resizeMgr(){
+            var resVal = document.getElementById("resizeManager").getAttribute("value");
+            if(resVal == "open"){
+                document.getElementById("resizeManager").setAttribute("value", "close");
+                $("#toolManager").width(0);
+                $("#managerContainer").width(50);
+                alignElm();
+            }else{
+                $("#toolManager").width(350);
+                $("#managerContainer").width(400);
+                document.getElementById("resizeManager").setAttribute("value", "open");
+                alignElm();
+            }
+        }
+
+        //document.getElementById("resizeManager").addEventListener("click", resizeMgr());
+            
+        // });
+
+
+        function tools(){
+            var resVal = document.getElementById("resizeManager").getAttribute("value");
+            if(resVal == "open"){
+                document.getElementById("resizeManager").setAttribute("value", "close");
+                document.getElementById("toolExp").style.display = "block";
+            }else{
+                document.getElementById("resizeManager").setAttribute("value", "open");
+                document.getElementById("toolExp").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
